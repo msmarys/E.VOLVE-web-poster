@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Feature Mono";
+  src: url("/fonts/FeatureMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Feature Mono";
+  src: url("/fonts/FeatureMono-Medium.ttf") format("truetype");
+  font-weight: medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Feature Mono";
+  src: url("/fonts/FeatureMono-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
