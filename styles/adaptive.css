@@ -1,0 +1,40 @@
+/* первый экран 1920px */
+@media screen and (min-width: 1920px) {
+  .title {
+    max-width: 780px;
+    margin: 0 auto;
+    font-family: "Feature Mono";
+    font-weight: bold;
+    font-size: 100px;
+    color: #f48aba;
+    text-stroke: 2px #232323;
+    -webkit-text-stroke: 2px #232323;
+    letter-spacing: -2%;
+    line-height: 90%;
+    text-align: center;
+  }
+
+  .description {
+    text-align: center;
+    margin: 0 auto;
+    font-family: "Feature Mono";
+    font-weight: medium;
+    font-size: 24px;
+    color: #232323;
+    max-width: 670px;
+    line-height: 110%;
+    margin-top: 40px;
+  }
+
+  .plane {
+    position: absolute;
+    width: 130px;
+    height: 160px;
+  }
+
+  .content {
+    text-align: center;
+    position: absolute;
+    top: 90px;
+  }
+}
