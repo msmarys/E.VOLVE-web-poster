@@ -27,7 +27,8 @@ html {
   border: 2px solid #232323;
   color: #ffffff;
   font-size: 20px;
-  font-weight: normal;
+  font-family: "Feature Mono";
+  font-weight: 400;
   text-align: center;
   cursor: pointer;
   margin-top: 40px;
@@ -37,4 +38,9 @@ html {
 
 #start-button:hover {
   background: #a39acf;
+}
+
+.plane {
+  position: absolute;
+  transition: transform 1s linear, left 0.1s linear, top 0.1s linear;
 }

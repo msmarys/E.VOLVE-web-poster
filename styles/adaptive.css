@@ -4,10 +4,9 @@
     max-width: 780px;
     margin: 0 auto;
     font-family: "Feature Mono";
-    font-weight: bold;
+    font-weight: 700;
     font-size: 100px;
     color: #f48aba;
-    text-stroke: 2px #232323;
     -webkit-text-stroke: 2px #232323;
     letter-spacing: -2%;
     line-height: 90%;
@@ -18,7 +17,7 @@
     text-align: center;
     margin: 0 auto;
     font-family: "Feature Mono";
-    font-weight: medium;
+    font-weight: 500;
     font-size: 24px;
     color: #232323;
     max-width: 670px;
@@ -27,9 +26,8 @@
   }
 
   .plane {
-    position: absolute;
-    width: 130px;
-    height: 160px;
+    width: 166px;
+    height: 205px;
   }
 
   .content {

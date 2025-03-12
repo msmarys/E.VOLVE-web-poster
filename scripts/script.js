@@ -18,33 +18,52 @@ document.addEventListener("DOMContentLoaded", () => {
     plane.style.top = `${y}px`;
     planesContainer.appendChild(plane);
 
-    animatePlane(plane);
+    // Закладываем траекторию до появления самолета
+    const angle = Math.random() * 360;
+    const speed = 4; // Увеличиваем скорость
+
+    setTimeout(() => {
+      animatePlane(plane, angle, speed);
+    }, 100); // Задержка перед началом анимации
 
     setTimeout(() => {
       plane.classList.add("fade-out");
       setTimeout(() => plane.remove(), 2000);
-    }, 8000);
+    }, 10000);
   }
 
-  function animatePlane(plane) {
+  function animatePlane(plane, angle, speed) {
     let posX = parseInt(plane.style.left, 10);
     let posY = parseInt(plane.style.top, 10);
-    let angle = Math.random() * 40 - 20;
-    let speedX = Math.random() * 2 + 1;
-    let speedY = Math.random() * 2 - 1;
 
     function move() {
       if (!document.body.contains(plane)) return;
 
-      posX += speedX;
-      posY += speedY;
+      let radians = angle * (Math.PI / 180);
+      posX += Math.cos(radians) * speed;
+      posY += Math.sin(radians) * speed;
 
-      if (posX > window.innerWidth || posY < 0 || posY > window.innerHeight) {
-        plane.remove();
-        return;
+      // Проверка границ экрана
+      if (posX <= 0) {
+        angle = 180 - angle;
+        posX = 0;
+      } else if (posX >= window.innerWidth - plane.width) {
+        angle = 180 - angle;
+        posX = window.innerWidth - plane.width;
       }
 
-      plane.style.transform = `translate(${posX}px, ${posY}px) rotate(${angle}deg)`;
+      if (posY <= 0) {
+        angle = -angle;
+        posY = 0;
+      } else if (posY >= window.innerHeight - plane.height) {
+        angle = -angle;
+        posY = window.innerHeight - plane.height;
+      }
+
+      plane.style.left = `${posX}px`;
+      plane.style.top = `${posY}px`;
+      plane.style.transform = `rotate(${angle}deg)`;
+
       requestAnimationFrame(move);
     }
 
