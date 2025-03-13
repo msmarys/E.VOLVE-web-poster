@@ -1,4 +1,4 @@
-/* первый экран 1920px */
+/* 1920+px */
 @media screen and (min-width: 1920px) {
   .title {
     max-width: 780px;

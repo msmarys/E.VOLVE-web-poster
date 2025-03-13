@@ -42,5 +42,7 @@ html {
 
 .plane {
   position: absolute;
-  transition: transform 1s linear, left 0.1s linear, top 0.1s linear;
+  transition: left 0.1s linear, top 0.1s linear;
+  user-select: none;
+  pointer-events: none;
 }

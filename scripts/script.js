@@ -1,5 +1,6 @@
 // полет самолетов на первом экране
 document.addEventListener("DOMContentLoaded", () => {
+
   const planesContainer = document.getElementById("planes-container");
   const startButton = document.getElementById("start-button");
   const planeImages = ["img/plane1.svg", "img/plane2.svg", "img/plane3.svg"];
@@ -14,17 +15,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const plane = document.createElement("img");
     plane.src = planeImages[Math.floor(Math.random() * planeImages.length)];
     plane.classList.add("plane");
-    plane.style.left = `${x}px`;
-    plane.style.top = `${y}px`;
     planesContainer.appendChild(plane);
 
-    // Закладываем траекторию до появления самолета
-    const angle = Math.random() * 360;
-    const speed = 4; // Увеличиваем скорость
+    plane.style.left = `${x}px`;
+    plane.style.top = `${y}px`;
+
+    let angle = Math.random() * 360;
+    let speed = 2 + Math.random() * 3;
+
+    plane.style.transform = `rotate(${angle}deg)`;
 
     setTimeout(() => {
       animatePlane(plane, angle, speed);
-    }, 100); // Задержка перед началом анимации
+    }, 100);
 
     setTimeout(() => {
       plane.classList.add("fade-out");
@@ -33,32 +36,52 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function animatePlane(plane, angle, speed) {
-    let posX = parseInt(plane.style.left, 10);
-    let posY = parseInt(plane.style.top, 10);
+    let posX = parseFloat(plane.style.left);
+    let posY = parseFloat(plane.style.top);
 
     function move() {
       if (!document.body.contains(plane)) return;
 
-      let radians = angle * (Math.PI / 180);
-      posX += Math.cos(radians) * speed;
-      posY += Math.sin(radians) * speed;
+      let radians = (angle * Math.PI) / 180;
+      let newX = posX + Math.cos(radians) * speed;
+      let newY = posY + Math.sin(radians) * speed;
 
-      // Проверка границ экрана
-      if (posX <= 0) {
+      let planeWidth = plane.clientWidth;
+      let planeHeight = plane.clientHeight;
+      let minX = 0;
+      let maxX = window.innerWidth - planeWidth;
+      let minY = 0;
+      let maxY = window.innerHeight - planeHeight;
+
+      let bounced = false;
+
+      if (newX <= minX) {
         angle = 180 - angle;
-        posX = 0;
-      } else if (posX >= window.innerWidth - plane.width) {
+        newX = minX + 2;
+        bounced = true;
+      } else if (newX >= maxX) {
         angle = 180 - angle;
-        posX = window.innerWidth - plane.width;
+        newX = maxX - 2;
+        bounced = true;
       }
 
-      if (posY <= 0) {
+      if (newY <= minY) {
         angle = -angle;
-        posY = 0;
-      } else if (posY >= window.innerHeight - plane.height) {
+        newY = minY + 2;
+        bounced = true;
+      } else if (newY >= maxY) {
         angle = -angle;
-        posY = window.innerHeight - plane.height;
+        newY = maxY - 2;
+        bounced = true;
       }
+
+      if (bounced) {
+        angle += (Math.random() - 0.5) * 10;
+        angle = angle % 360;
+      }
+
+      posX = newX;
+      posY = newY;
 
       plane.style.left = `${posX}px`;
       plane.style.top = `${posY}px`;
