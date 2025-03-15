@@ -1,6 +1,5 @@
-// полет самолетов на первом экране
 document.addEventListener("DOMContentLoaded", () => {
-
+  // полет самолетов на первом экране
   const planesContainer = document.getElementById("planes-container");
   const startButton = document.getElementById("start-button");
   const planeImages = ["img/plane1.svg", "img/plane2.svg", "img/plane3.svg"];
@@ -92,4 +91,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
     move();
   }
+});
+
+//  выбор модели самолета
+const models = document.querySelectorAll(".model-placeholder");
+const previewContainer = document.getElementById("preview-container");
+const previewImage = document.getElementById("preview-image");
+const modelName = document.getElementById("model-name");
+const saveButton = document.querySelector(".save-button");
+const defaultModel = {
+  src: "img/model1.svg",
+  name: "Модель №1",
+  bgColor: "#F0E5FF",
+};
+
+const modelData = {
+  model1: { src: "img/model1.svg", name: "Модель №1", bgColor: "#F0E5FF" },
+  model2: { src: "img/model2.svg", name: "Модель №2", bgColor: "#E5FFF5" },
+  model3: { src: "img/model3.svg", name: "Модель №3", bgColor: "#FFE5E5" },
+  model4: { src: "img/model4.svg", name: "Модель №4", bgColor: "#E5E9FF" },
+};
+
+function applyModel(modelKey) {
+  const model = modelData[modelKey] || defaultModel;
+
+  previewImage.src = model.src;
+  previewImage.style.width = "705px";
+  previewImage.style.height = "580px";
+
+  modelName.textContent = model.name;
+  modelName.style.fontFamily = "'Feature Mono', monospace";
+  modelName.style.fontWeight = "700";
+  modelName.style.fontSize = "70px";
+  modelName.style.lineHeight = "110%";
+  modelName.style.color = "#232323";
+  modelName.style.position = "absolute";
+  modelName.style.bottom = "40px";
+  modelName.style.left = "50%";
+  modelName.style.transform = "translateX(-50%)";
+
+  previewContainer.style.backgroundColor = model.bgColor;
+
+  sessionStorage.setItem("selectedModel", modelKey);
+}
+
+applyModel("model1");
+
+models.forEach((model) => {
+  model.addEventListener("click", function () {
+    models.forEach((m) => m.classList.remove("active"));
+    this.classList.add("active");
+    const modelKey = this.getAttribute("data-model");
+    applyModel(modelKey);
+  });
+});
+
+saveButton.addEventListener("click", () => {
+  window.location.href = "next-screen.html";
 });
