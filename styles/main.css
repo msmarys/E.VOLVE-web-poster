@@ -8,6 +8,14 @@ html {
   overflow: hidden;
 }
 
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
 /* первый экран */
 h1 {
   max-width: 780px;
@@ -81,10 +89,10 @@ h1 {
 }
 
 /* выбор модели */
-.second-screen {
+#second-screen {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: relative;
   background: url("../img/bg2.svg") no-repeat center center/cover;
 }
 

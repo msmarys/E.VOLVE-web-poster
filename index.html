@@ -23,7 +23,7 @@
 
   <body>
     <!-- первый экран -->
-    <section id="first-screen" class="screen">
+    <section id="first-screen" class="screen active">
       <div class="content">
         <h1 class="title">Запусти мечту в&nbsp;полёт!</h1>
         <p class="description">
@@ -37,8 +37,7 @@
     </section>
 
     <!-- экран выбора модели -->
-    <section class="second-screen">
-
+    <section id="second-screen" class="screen">
       <div class="model-selection">
         <!-- Левый контейнер -->
         <div class="left-container" id="selectedModelContainer">
@@ -88,6 +87,10 @@
           <button class="save-button">Сохранить мой выбор</button>
         </div>
       </div>
+    </section>
+
+    <section id="third-screen" class="screen">
+      <h2>Выбранная модель сохранена!</h2>
     </section>
 
     <script src="scripts/script.js"></script>
