@@ -100,7 +100,6 @@ h1 {
   position: absolute;
   font-weight: 500;
   color: #f48aba;
-  position: absolute;
   top: 30px;
   right: 30px;
   font-size: 18px;
@@ -111,8 +110,10 @@ h1 {
 }
 
 .left-container {
-  width: calc(50% - 12px);
-  height: 956px;
+  width: calc(50% - 90px - 12px);
+  margin-left: 90px;
+  margin-right: 12px;
+  padding: 40px;
   border: 2px solid #232323;
   border-radius: 40px;
   display: flex;
@@ -123,8 +124,9 @@ h1 {
 }
 
 .right-container {
-  width: calc(50% - 12px);
-  height: 956px;
+  width: calc(50% - 90px - 12px);
+  margin-right: 90px;
+  margin-left: 12px;
   background-color: #f3e6d6;
   padding: 40px 60px;
   border: 2px solid #232323;
@@ -137,6 +139,7 @@ h1 {
 h2 {
   font-size: 70px;
   font-weight: 700;
+  line-height: 100%;
   color: #4e8dff;
   -webkit-text-stroke: 1px #232323;
   text-align: center;
@@ -194,10 +197,13 @@ h2 {
 
 .save-button {
   margin-top: 35px;
+  border-radius: 40px;
   width: 100%;
   height: 70px;
   font-size: 24px;
   font-weight: 400;
+  font-family: "Feature Mono";
+  text-align: center;
   color: #ffffff;
   background-color: #f48aba;
   border: 2px solid #232323;

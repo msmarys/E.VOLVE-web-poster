@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+  document.body.style.overflow = "hidden"; // Отключаем прокрутку страницы
+
   const startButton = document.getElementById("start-button");
   const saveButton = document.querySelector(".save-button");
   const planesContainer = document.getElementById("planes-container");
