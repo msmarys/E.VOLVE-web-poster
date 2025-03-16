@@ -22,77 +22,71 @@
   </head>
 
   <body>
-    <!-- первый экран -->
-    <section id="first-screen" class="screen active">
-      <div class="content">
-        <h1 class="title">Запусти мечту в&nbsp;полёт!</h1>
-        <p class="description">
-          Создай свой бумажный самолётик. А&nbsp;затем отправь
-          его&nbsp;в&nbsp;полет! Кто&nbsp;знает, может, именно с&nbsp;этого
-          начинается исполнение желаний?
-        </p>
-        <button id="start-button" class="btn">Полетели!</button>
-      </div>
-      <div id="planes-container"></div>
+    <body>
+    <!-- Первый экран -->
+    <section id="first-screen" class="screen">
+        <div class="content">
+            <h1 class="title">Запусти мечту в&nbsp;полёт!</h1>
+            <p class="description">
+                Создай свой бумажный самолётик. А&nbsp;затем отправь
+                его&nbsp;в&nbsp;полет! Кто&nbsp;знает, может, именно с&nbsp;этого
+                начинается исполнение желаний?
+            </p>
+            <button id="start-button" class="btn">Полетели!</button>
+        </div>
+        <div id="planes-container"></div>
     </section>
 
-    <!-- экран выбора модели -->
+    <!-- Экран выбора модели -->
     <section id="second-screen" class="screen">
-      <div class="model-selection">
-        <!-- Левый контейнер -->
-        <div class="left-container" id="selectedModelContainer">
-          <div class="selected-model" id="selectedModel">
-            <img src="img/model1svg.svg" id="selectedModelImage" />
-          </div>
-          <div class="selected-model-name" id="selectedModelName">
-            Модель №1
-          </div>
+        <div class="model-selection">
+            <div class="left-container" id="selectedModelContainer">
+                <div class="selected-model" id="selectedModel">
+                    <img src="img/model1svg.svg" id="selectedModelImage" />
+                </div>
+                <div class="selected-model-name" id="selectedModelName">Модель №1</div>
+            </div>
+            <div class="right-container">
+                <div class="step-counter">1/<span>4</span></div>
+                <h2>Начнём с&nbsp;выбора модели самолётика</h2>
+                <div class="models">
+                    <div class="model model1" data-model="1" data-color="#F48ABA">
+                        <div class="model-placeholder">
+                            <img src="img/model1svg.svg" />
+                        </div>
+                        <div class="model-name">Модель №1</div>
+                    </div>
+                    <div class="model model2" data-model="2" data-color="#2CB46C">
+                        <div class="model-placeholder">
+                            <img src="img/model2.svg" />
+                        </div>
+                        <div class="model-name">Модель №2</div>
+                    </div>
+                    <div class="model model3" data-model="3" data-color="#4E8DFF">
+                        <div class="model-placeholder">
+                            <img src="img/model3.svg" />
+                        </div>
+                        <div class="model-name">Модель №3</div>
+                    </div>
+                    <div class="model model4" data-model="4" data-color="#FFCA40">
+                        <div class="model-placeholder">
+                            <img src="img/model4.svg" alt="Модель 4" />
+                        </div>
+                        <div class="model-name">Модель №4</div>
+                    </div>
+                </div>
+                <button class="save-button">Сохранить мой выбор</button>
+            </div>
         </div>
-
-        <!-- Правый контейнер -->
-        <div class="right-container">
-          <div class="step-counter">1/<span>4</span></div>
-          <h2>Начнём с&nbsp;выбора модели самолётика</h2>
-
-          <div class="models">
-            <div class="model model1" data-model="1" data-color="#F48ABA">
-              <div class="model-placeholder">
-                <img src="img/model1svg.svg" />
-              </div>
-              <div class="model-name">Модель №1</div>
-            </div>
-
-            <div class="model model2" data-model="2" data-color="#2CB46C">
-              <div class="model-placeholder">
-                <img src="img/model2.svg" />
-              </div>
-              <div class="model-name">Модель №2</div>
-            </div>
-
-            <div class="model model3" data-model="3" data-color="#4E8DFF">
-              <div class="model-placeholder">
-                <img src="img/model3.svg" />
-              </div>
-              <div class="model-name">Модель №3</div>
-            </div>
-
-            <div class="model model4" data-model="4" data-color="#FFCA40">
-              <div class="model-placeholder">
-                <img src="img/model4.svg" alt="Модель 4" />
-              </div>
-              <div class="model-name">Модель №4</div>
-            </div>
-          </div>
-
-          <button class="save-button">Сохранить мой выбор</button>
-        </div>
-      </div>
     </section>
 
+    <!-- Третий экран -->
     <section id="third-screen" class="screen">
-      <h2>Выбранная модель сохранена!</h2>
+        <h2>Выбранная модель сохранена!</h2>
     </section>
 
     <script src="scripts/script.js"></script>
-  </body>
+</body>
+
+
 </html>

@@ -1,42 +1,47 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const planesContainer = document.getElementById("planes-container");
   const startButton = document.getElementById("start-button");
-  const saveButton = document.getElementById("save-button");
-  const planeImages = ["img/plane1.svg", "img/plane2.svg", "img/plane3.svg"];
+  const saveButton = document.querySelector(".save-button");
+  const planesContainer = document.getElementById("planes-container");
 
-  // Обработчик клика по документу для создания случайных самолетиков
+  // Функция плавного скролла к секции
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.error(`Ошибка: секция ${sectionId} не найдена!`);
+    }
+  }
+
+  // Переход с первого экрана ко второму по кнопке "Полетели!"
+  if (startButton) {
+    startButton.addEventListener("click", () => {
+      console.log("Кнопка 'Полетели!' нажата");
+      scrollToSection("second-screen");
+    });
+  } else {
+    console.error("Ошибка: кнопка start-button не найдена!");
+  }
+
+  // Переход со второго экрана на третий
+  if (saveButton) {
+    saveButton.addEventListener("click", () => {
+      console.log("Выбор сохранён, переходим к третьему экрану");
+      scrollToSection("third-screen");
+    });
+  } else {
+    console.error("Ошибка: кнопка сохранения не найдена!");
+  }
+
+  // Создание случайных самолетиков при клике в любом месте экрана
   document.addEventListener("click", (event) => {
     if (event.target !== startButton) {
       createRandomPlane(event.clientX, event.clientY);
     }
   });
 
-  // Функция для переключения экранов
-  function switchScreen(from, to) {
-    const fromScreen = document.getElementById(from);
-    const toScreen = document.getElementById(to);
-
-    if (fromScreen && toScreen) {
-      console.log(`Переключаем с ${from} на ${to}`);
-      fromScreen.classList.remove("active");
-      toScreen.classList.add("active");
-    } else {
-      console.error("Ошибка: один из экранов не найден", from, to);
-    }
-  }
-
-  // Обработчик нажатия на кнопку "Начать"
-  if (startButton) {
-    startButton.addEventListener("click", () => {
-      console.log("Кнопка нажата, переключаем экран!");
-      switchScreen("first-screen", "second-screen");
-    });
-  } else {
-    console.error("Ошибка: кнопка start-button не найдена!");
-  }
-
-  // Функция для создания случайного самолетика
   function createRandomPlane(x, y) {
+    const planeImages = ["img/plane1.svg", "img/plane2.svg", "img/plane3.svg"];
     const plane = document.createElement("img");
     plane.src = planeImages[Math.floor(Math.random() * planeImages.length)];
     plane.classList.add("plane");
@@ -47,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let angle = Math.random() * 360;
     let speed = 2 + Math.random() * 3;
-
     plane.style.transform = `rotate(${angle}deg)`;
 
     setTimeout(() => {
@@ -60,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 10000);
   }
 
-  // Функция анимации движения самолетика
   function animatePlane(plane, angle, speed) {
     let posX = parseFloat(plane.style.left);
     let posY = parseFloat(plane.style.top);
