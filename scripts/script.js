@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.body.style.overflow = "hidden"; // Отключаем прокрутку страницы
+  document.body.style.overflow = "hidden"; 
 
   const startButton = document.getElementById("start-button");
   const saveButton = document.querySelector(".save-button");
   const planesContainer = document.getElementById("planes-container");
 
-  // Функция плавного скролла к секции
+  // Функция скролла к сл экрану
   function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(`Ошибка: секция ${sectionId} не найдена!`);
     }
   }
-
-  // Переход с первого экрана ко второму по кнопке "Полетели!"
   if (startButton) {
     startButton.addEventListener("click", () => {
       console.log("Кнопка 'Полетели!' нажата");
@@ -25,17 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Ошибка: кнопка start-button не найдена!");
   }
 
-  // Переход со второго экрана на третий
-  if (saveButton) {
-    saveButton.addEventListener("click", () => {
-      console.log("Выбор сохранён, переходим к третьему экрану");
-      scrollToSection("third-screen");
-    });
-  } else {
-    console.error("Ошибка: кнопка сохранения не найдена!");
-  }
 
-  // Создание случайных самолетиков при клике в любом месте экрана
+  // Создание самолетиков на первом экране
   document.addEventListener("click", (event) => {
     if (event.target !== startButton) {
       createRandomPlane(event.clientX, event.clientY);

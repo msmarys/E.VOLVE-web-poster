@@ -142,14 +142,15 @@ h2 {
   line-height: 100%;
   color: #4e8dff;
   -webkit-text-stroke: 1px #232323;
-  text-align: center;
+  text-align: left;
 }
 
 .models {
+  margin-top: 35px;
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  justify-content: center;
+  justify-content: left;
   width: 100%;
 }
 
