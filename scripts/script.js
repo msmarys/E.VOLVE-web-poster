@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.body.style.overflow = "hidden"; 
+  document.body.style.overflow = "hidden";
 
   const startButton = document.getElementById("start-button");
   const saveButton = document.querySelector(".save-button");
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     } else {
-      console.error(`Ошибка: секция ${sectionId} не найдена!`);
+      console.error(`Ошибка`);
     }
   }
   if (startButton) {
@@ -20,9 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
       scrollToSection("second-screen");
     });
   } else {
-    console.error("Ошибка: кнопка start-button не найдена!");
+    console.error("Ошибка");
   }
-
 
   // Создание самолетиков на первом экране
   document.addEventListener("click", (event) => {
@@ -111,5 +110,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     move();
+  }
+});
+
+// второй экран
+document.querySelectorAll(".model").forEach((model) => {
+  const color = model.dataset.color;
+  const placeholder = model.querySelector(".model-placeholder");
+
+  if (placeholder) {
+    placeholder.style.backgroundColor = color;
   }
 });
