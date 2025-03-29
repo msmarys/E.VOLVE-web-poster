@@ -370,15 +370,15 @@
   }
   .selected-model {
     width: 410px;
-    height: 580px;
+    height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .selected-model img {
-    width: 340px;
-    height: 380px;
+    width: 240px;
+    height: 170px;
     object-fit: contain;
   }
 
@@ -405,7 +405,6 @@
   .left-container,
   .right-container {
     width: 80%;
-    margin: 0px;
     padding: 20px;
     border: 2px solid #232323;
     border-radius: 20px;
@@ -416,7 +415,7 @@
   }
 
   .left-container {
-    height: 420px;
+    height: 300px;
     background-color: #f48aba;
     margin-bottom: 20px;
   }
