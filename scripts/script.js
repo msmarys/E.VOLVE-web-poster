@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Ошибка");
   }
 
-  // Создание самолетиков на первом экране
+  // первый эакран - эх, самолеты
   document.addEventListener("click", (event) => {
     if (event.target !== startButton) {
       createRandomPlane(event.clientX, event.clientY);
@@ -121,4 +121,78 @@ document.querySelectorAll(".model").forEach((model) => {
   if (placeholder) {
     placeholder.style.backgroundColor = color;
   }
+});
+
+const models = document.querySelectorAll(".model");
+const selectedModelContainer = document.getElementById(
+  "selectedModelContainer"
+);
+const selectedModelImage = document.getElementById("selectedModelImage");
+const selectedModelName = document.getElementById("selectedModelName");
+const saveButton = document.querySelector(".save-button");
+const modelData = {
+  1: {
+    previewSrc: "img/model-1.svg",
+    name: "Модель №1",
+    bgColor: "#F48ABA",
+  },
+  2: {
+    previewSrc: "img/model-2.svg",
+    name: "Модель №2",
+    bgColor: "#2CB46C",
+  },
+  3: {
+    previewSrc: "img/model-3.svg",
+    name: "Модель №3",
+    bgColor: "#4E8DFF",
+  },
+  4: {
+    previewSrc: "img/model-4.svg",
+    name: "Модель №4",
+    bgColor: "#FFCA40",
+  },
+};
+
+function selectModel(modelKey) {
+  const model = modelData[modelKey];
+  if (!model) return;
+
+  selectedModelImage.src = model.previewSrc;
+  selectedModelName.textContent = model.name;
+  selectedModelContainer.style.backgroundColor = model.bgColor;
+
+  sessionStorage.setItem("selectedModel", modelKey);
+
+  models.forEach((m) => m.classList.remove("active"));
+
+  document.querySelector(`[data-model="${modelKey}"]`).classList.add("active");
+}
+
+const savedModel = sessionStorage.getItem("selectedModel");
+if (savedModel && modelData[savedModel]) {
+  selectModel(savedModel);
+} else {
+  selectModel("1");
+}
+
+models.forEach((model) => {
+  model.addEventListener("click", function () {
+    const modelKey = this.getAttribute("data-model");
+    selectModel(modelKey);
+  });
+});
+
+// переход к 3 экрану
+function scrollToSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  } else {
+    console.error("Ошибка");
+  }
+}
+
+saveButton.addEventListener("click", () => {
+  console.log("ура, получилось");
+  scrollToSection("third-screen");
 });

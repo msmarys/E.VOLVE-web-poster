@@ -110,6 +110,7 @@ h1 {
 }
 
 .left-container {
+  height: 845px;
   width: calc(50% - 90px - 12px);
   margin-left: 90px;
   margin-right: 12px;
